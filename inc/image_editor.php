@@ -40,4 +40,20 @@ class User_Insta_GD_Filters_Editor extends WP_Image_Editor_GD {
 		imagefilter( $this->image, IMG_FILTER_GRAYSCALE );
 		return true;
 	}
+
+	public function red() {
+		imagefilter( $this->image, IMG_FILTER_COLORIZE, 255, 100, 100 );
+		return true;
+	}
+
+	public function pixelate() {
+		imagefilter( $this->image, IMG_FILTER_PIXELATE, 40, true );
+		return true;
+	}
+
+	public function emboss() {
+		imagefilter( $this->image, IMG_FILTER_EMBOSS );
+		return true;
+	}
+
 }

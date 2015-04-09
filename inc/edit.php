@@ -15,7 +15,7 @@ function user_insta_edit_post() {
 	$image_url = get_attached_file( $post->ID );
 		// var_dump($image_url);
 
-	$image = wp_get_image_editor( $image_url, array( "methods" => array( 'sepia', 'greyscale' ) ) );
+	$image = wp_get_image_editor( $image_url, array( "methods" => array( 'sepia', 'greyscale', 'red', 'pixelate', 'negate', 'emboss' ) ) );
 		// https://codex.wordpress.org/Function_Reference/wp_get_image_editor
 	
 	// Apply the filters for the image

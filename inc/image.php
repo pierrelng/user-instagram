@@ -11,14 +11,14 @@ function user_insta_filter() {
     }
 
 	$file            = get_attached_file( $attachment->ID );
-	$allowed_filters = array( 'sepia', 'greyscale', 'negate' );
+	$allowed_filters = array( 'sepia', 'greyscale', 'negate', 'red', 'pixelate', 'emboss' );
 	$filter          = isset( $_GET['filter'] ) && in_array( $_GET['filter'], $allowed_filters ) ? $_GET['filter'] : false;
 
     if ( ! wp_attachment_is_image( $id ) ) {
         die();
     }
 
-	$image = wp_get_image_editor( $file, array( "methods" => array( 'sepia', 'greyscale' ) ) );
+	$image = wp_get_image_editor( $file, array( "methods" => array( 'sepia', 'greyscale', 'negate', 'red', 'pixelate', 'emboss' ) ) );
 	$image = user_insta_filter_apply( $filter, $image );
 	$image->resize( 1024, 0 );
 
@@ -45,6 +45,15 @@ function user_insta_filter_apply( $filter, $editor, $args = array() ) {
 			break;
         case 'negate' :
             $editor->negate();
+            break;
+        case 'red' :
+            $editor->red();
+            break;
+        case 'pixelate' :
+            $editor->pixelate();
+            break;
+        case 'emboss' :
+            $editor->emboss();
             break;
 	}
 
