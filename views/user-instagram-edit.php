@@ -6,7 +6,7 @@ $edited_post = get_post( get_query_var( 'ID' ) );
 			<article>
 				<div class="entry-content">
 				
-					<?php echo user_instagram_get_message(); ?>
+					<h2><?php echo user_instagram_get_message(); ?></h2>
 
 					<form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="POST">
 
@@ -34,10 +34,15 @@ $edited_post = get_post( get_query_var( 'ID' ) );
 						       value="<?php echo add_query_arg( $arr_params, admin_url( 'admin-ajax.php' ) ); ?>">
 
 						<?php wp_nonce_field( 'user-instagram-edit' ); ?>
-
-						<a href="&?filter=sepia">Sépia</a> <br><br>
-						<a href="&?filter=greyscale">Greyscale</a> <br><br>
-						<a href="&?filter">Reset</a> <br><br>
+						
+						<p>Appliquer un filtre :</p>
+						<a href="?filter=sepia">Sépia</a> <br><br>
+						<a href="?filter=greyscale">Greyscale</a> <br><br>
+						<a href="?filter=negate">Négatif</a> <br><br>
+						<a href="?filter=red">Rouge</a> <br><br>
+						<a href="?filter=pixelate">Meru Uno</a> <br><br>
+						<a href="?filter=emboss">Meru Dos</a> <br><br>
+						<a href="?filter">Reset</a> <br><br>
 						
 						
 						<input type="submit" name="submit" value="Publier">
@@ -48,4 +53,5 @@ $edited_post = get_post( get_query_var( 'ID' ) );
 		</main>
 		<!-- #main -->
 	</div><!-- #primary -->
+<?php get_sidebar(); ?>
 <?php get_footer();
